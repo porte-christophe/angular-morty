@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { ERROR_URLS } from './core/constants/urls.constants';
-import { CHARACTERS_PATHS, ERROR_PATHS, ROOT_PATHS } from './core/constants/paths.constants';
+import { EPISODES_PATHS, PLANETS_PATHS, CHARACTERS_PATHS, ERROR_PATHS, ROOT_PATHS } from './core/constants/paths.constants';
 import { Home } from './features/home/home';
 
 export const routes: Routes = [
@@ -17,6 +17,16 @@ export const routes: Routes = [
     path: CHARACTERS_PATHS.base,
     loadChildren: async () =>
       import('./features/characters/characters.routes').then((module) => module.CHARACTERS_ROUTES),
+  },
+  {
+    path: PLANETS_PATHS.base,
+    loadChildren: async () =>
+      import('./features/planets/planets.routes').then((module) => module.PLANETS_ROUTES),
+  },
+  {
+    path: EPISODES_PATHS.base,
+    loadChildren: async () =>
+    import('./features/episodes/episodes.routes').then((module) => module.EPISODES_ROUTES)
   },
   {
     path: ERROR_PATHS.base,

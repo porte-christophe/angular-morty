@@ -1,0 +1,74 @@
+<article
+    class="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-green-400/20 bg-slate-900/70 shadow-xl backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-green-400/60 hover:shadow-[0_0_40px_rgba(74,222,128,0.25)]"
+>
+
+  <!-- Glow -->
+  <div
+    class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-green-400/10 blur-3xl transition group-hover:bg-green-400/20"
+  ></div>
+
+  <!-- Image -->
+  <div class="relative">
+
+
+    <!-- Content -->
+    <div class="relative flex flex-1 flex-col p-6">
+
+      <h2
+        class="line-clamp-1 text-3xl font-black text-white"
+      >
+        {{ planet().name }}
+      </h2>
+
+
+      <!-- Infos -->
+
+      <div class="mt-6 space-y-4">
+
+
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">
+            Type
+          </span>
+          <span class="font-semibold text-cyan-300">
+            {{ planet().type || 'Unknown' }}
+          </span>
+        </div>
+
+
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">
+            Dimension
+          </span>
+          <span class="font-semibold text-white">
+            {{ planet().dimension }}
+          </span>
+        </div>
+
+
+        <div>
+          <span class="text-slate-400">
+            Resident
+          </span>
+          <p class="line-clamp-1 mt-1 font-semibold text-white">
+            res
+          </p>
+        </div>
+
+
+      </div>
+
+
+      <!-- Footer -->
+
+      <div class="mt-6 flex items-center justify-between border-t border-slate-700 pt-4">
+      <span class="text-sm text-slate-400">
+        {{ planet().created }}
+      </span>
+      </div>
+
+
+    </div>
+  </div>
+
+</article>

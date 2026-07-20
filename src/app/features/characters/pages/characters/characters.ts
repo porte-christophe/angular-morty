@@ -3,7 +3,7 @@ import { Character } from '../../types/character.type';
 import { CharacterCard } from '../../components/character-card/character-card';
 import { CharactersService } from '../../services/characters';
 import { ApiResponse, InfoResponse } from '../../../../shared/types/api-response.types';
-import { Pagination } from '../../components/pagination/pagination';
+import { Pagination } from '../../../../shared/components/pagination/pagination';
 
 @Component({
   selector: 'app-characters',
