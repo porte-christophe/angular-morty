@@ -34,25 +34,18 @@
             {{ planet().type || 'Unknown' }}
           </span>
         </div>
-
-
-        <div class="flex items-center justify-between">
-          <span class="text-slate-400">
-            Dimension
-          </span>
-          <span class="font-semibold text-white">
-            {{ planet().dimension }}
-          </span>
-        </div>
-
+        
 
         <div>
           <span class="text-slate-400">
             Resident
           </span>
-          <p class="line-clamp-1 mt-1 font-semibold text-white">
-            res
-          </p>
+          @for(res of planet().residents; track res){
+            <p class="line-clamp-1 mt-1 font-semibold text-white">
+              {{res}}
+            </p>
+          }
+          
         </div>
 
 
