@@ -17,18 +17,18 @@ export class PlanetCard implements OnInit{
   private readonly characterService = inject(CharactersService);
   planet = input.required<Planet>();
   private url:string = "";
-  characters: Character[] = [{id:87848, name: "zefezf"}as Character];
+  characters: Character[] = [];
   ngOnInit() {
-    
-    
+
+
   }
   
   getChar(){
     this.url = this.characterService.setUrlResidents(this.planet().residents);
     if (this.url!="") {
       this.characterService.getCharacters(this.url, this.characters).subscribe((c: Character[]) => {
-        this.characters = c; console.log(this.characters);});
-
+        if (Array.isArray(c)) {this.characters = c;}else{this.characters = [c];}
+      })   
     }
   }
 

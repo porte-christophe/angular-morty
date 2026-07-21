@@ -45,7 +45,13 @@ export class CharactersService {
     .get<Character[]>(url)
     //.pipe(tap((response: Character[]) => {characters.set(response);console.log(response);}));
   }
-
+  getCharactersByName(name: string, page: number): Observable<ApiResponse<Character[]>> {
+    return this.http
+      .get<ApiResponse<Character[]>>(this.url + "?name=" + name, {
+        params: { page: page },
+      })
+      .pipe(tap((response: ApiResponse<Character[]>) => {this.characters.set(response.results);}));
+  }
 
   getCharactersFromService(page: number = 1): Observable<ApiResponse<Character[]>> {
     return this.http

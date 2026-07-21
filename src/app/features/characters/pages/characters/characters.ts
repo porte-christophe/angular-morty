@@ -1,4 +1,5 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Character } from '../../types/character.type';
 import { CharacterCard } from '../../components/character-card/character-card';
 import { CharactersService } from '../../services/characters';
@@ -7,7 +8,7 @@ import { Pagination } from '../../../../shared/components/pagination/pagination'
 
 @Component({
   selector: 'app-characters',
-  imports: [CharacterCard, Pagination],
+  imports: [FormsModule, CharacterCard, Pagination],
   templateUrl: './characters.html',
   styleUrl: './characters.css',
 })
@@ -17,6 +18,7 @@ export class Characters implements OnInit {
   readonly infos = signal<InfoResponse>({} as InfoResponse);
   currentPage = signal(1);
   totalPage = signal(0);
+  name = "";
 
   ngOnInit() {
     // Method 1 : Do everything in the service
@@ -35,9 +37,17 @@ export class Characters implements OnInit {
         this.totalPage.set(this.infos().pages);
       });
   }
+  getCharactersByName(){
+    this.characterService.getCharactersByName(this.name,this.currentPage()).subscribe();
+  }
 
   changePage(page: number) {
     this.currentPage.set(page);
-    this.characterService.getCharactersFromService(page).subscribe();
+    if (this.name!="") {
+      this.characterService.getCharactersByName(this.name,page).subscribe();
+    } else {
+      this.characterService.getCharactersFromService(page).subscribe();
+    }
+    
   }
 }
