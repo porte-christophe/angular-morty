@@ -35,14 +35,14 @@
           </span>
         </div>
         
-
+        <button (click)="getChar()">OK</button>
         <div>
           <span class="text-slate-400">
             Resident
           </span>
-          @for(res of planet().residents; track res){
+          @for(res of characters; track res.id){
             <p class="line-clamp-1 mt-1 font-semibold text-white">
-              {{res}}
+              {{res.name}}
             </p>
           }
           
